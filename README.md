@@ -1,6 +1,6 @@
 # Top Gun - Equipe 22
 
-[D4G]
+## D4G 2022
 
 La team **Top Gun** :
 - Jean-loan Batcho
