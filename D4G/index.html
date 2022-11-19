@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="./dist/style.css">
+    <title>Choix des formations</title>
+    <script type="module" src="./data.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet"href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="crossorigin=""/>
+</head>
+<body class="bg-slate-50">
+    
+    <main>
+
+        <header class="w-full text-center bg-white text-black ">
+            <h1 class="  text-3xl mb-2 p-3 text-yellow-800 shadow-lg"> Design 4 Green </h1>
+        </header>
+        <div class=" absolute z-10 text-yellow-800 text-xl lg:text-4xl  left-1
+        cursor-pointer top-1/2 border-2  lg:border-3 lg:p-3 border-black bg-black hover:bg-yellow-800 hover:border-yellow-800 hover:text-black" onclick="Open()">
+            <ion-icon name="school-outline" >
+
+            </ion-icon>
+        </div>
+        <div class="absolute z-10 text-yellow-800 text-xl lg:text-4xl  right-1
+        cursor-pointer top-1/2 border-2  lg:border-3 lg:p-3 border-black bg-black hover:bg-yellow-800 hover:border-yellow-800 hover:text-black" onclick="Open_Panier()">
+            <ion-icon name="bag-add-outline" >
+
+            </ion-icon>
+        </div>
+        <div class="">
+            <div class="sidebar z-10 fixed top-0 bottom-0 left-[-300px] p-2 w-[-300px]
+            bg-slate-50 shadow-xl mt-36">
+            
+                <div class="text-yellow-800 text-xl">
+                        <div class="flex justify-between">
+                            <div class="p-2.5 mt-1 flex items-center text-lg lg:text-3xl" title="Click to display the list of the  training courses ">
+                                <ion-icon name="school-outline" title="Click to display the list of the  training courses"></ion-icon>
+                                <h1 class="font-bold text-[-15px] ml-3 text-yellow-800"> Cours </h1>
+                            </div>
+                            <div  class="cursor-pointer  text-yellow-800 text-lg lg:text-3xl mt-5">
+                                <ion-icon  onclick="Open()" name="close-outline"></ion-icon>
+                            </div>
+                        </div>
+                        <hr class="my-2 text-gray-600">
+                </div>
+                <div class=" p-2.5 mt-3 flex items-center flex-wrap rounded-md  duration-500
+                cursor-pointer bg-yellow-800 text-white">
+                        <ion-icon name="search-outline"></ion-icon>
+                        <label for="searchbar" class="hidden">Searchenar</label>
+                        <input name="searchbar" id="searchbar" type="text" placeholder="Recherchez un mot clé" class="searchbar lg:text-md text-[-15px] lg:ml-4 w-full bg-transparent
+                        focus:outline-none" >
+                </div>
+                <div id="test" class="cursor-pointer w-20 mb-2 lg:w-72 grid grid-col-1 lg:gap-2 lg:mx-auto p-2 text-black">
+
+                </div>
+            </div>
+
+
+            <div class="sidebar_panier z-10 fixed top-0 bottom-0 right-[-300px] p-2 w-[-300px]
+            bg-slate-50 shadow-xl mt-36">
+            
+                <div class="text-yellow-800 text-xl">
+                        <div class="flex justify-between">
+                            <div class="p-2.5 mt-1 flex items-center text-lg lg:text-3xl" title="Click to display the list of the  training courses ">
+                                <ion-icon name="bag-add-outline" title="Click to display the list of the  training courses"></ion-icon>
+                                <h1 class="font-bold text-[-15px] ml-3 text-yellow-800"> Panier </h1>
+                            </div>
+                            <div onclick="Open_Panier()" class="cursor-pointer  text-yellow-800 text-lg lg:text-3xl mt-5">
+                                <ion-icon   name="close-outline"></ion-icon>
+                            </div>
+                        </div>
+                        <hr class="my-2 text-gray-600">
+                </div>
+               <div class="flex justify-between flex-wrap">
+                <div id="for_mail" class="p-2 text-white bg-black"> 
+                    
+                </div>
+            
+                <button id="print" type="button" class="border-blackshadow-lg inline-block p-2 text-white bg-black">Download</button>
+               </div>
+                <div id="basket" class="cursor-pointer w-20 mb-2 lg:w-72 grid grid-col-1 lg:gap-2 lg:mx-auto p-2 text-black mt-5">
+                   
+                </div>
+            </div>
+
+            <div class="filers  flex flex-wrap lg:m-auto ">
+                <div class="text-xl text-yellow-800 mx-2 my-2">
+                    <label for="lieu" class="hidden">Ville</label>
+                    <select name="lieu" id="lieu" onchange="onchange_lieu()">
+                        <option  value="">Ville</option>
+                        <option  value="Albi">Albi</option>
+                        <option  value="Ales">Ales</option>
+                        <option  value="Anglet">Anglet</option>
+                        <option  value="Bordeaux">Bordeaux</option>
+                        <option  value="Boulogne-Billancourt">Boulogne-Billancourt</option>
+                        <option  value="Evry">Evry</option>
+                        <option  value="La Bernatrdière">La Bernatrdière</option>
+                        <option  value="La Rochelle">La Rochelle</option>
+                        <option  value="Levallois-Perret">Levallois-Perret</option>
+                        <option  value="Lille">Lille</option>
+                        <option  value="Lyon">Lyon</option>
+                        <option  value="Montpellier">Montpellier</option>
+                        <option  value="Morlaix">Morlaix</option>
+                        <option  value="Mulhouse">Mulhouse</option>
+                        <option  value="Nantes">Nantes</option>
+                        <option  value="Paris">Paris</option>
+                        <option  value="Pontoise">Pontoise</option>
+                        <option  value="Puteaux">Puteaux</option>
+                        <option  value="Puteaux-La défense">Puteaux-La défense</option>
+                        <option  value="Rennes">Rennes</option>
+                        <option  value="Rouen">Rouen</option>
+                        <option  value="Saint Malo">Saint Malo</option>
+                        <option  value="Saint-Barthélémy d'Anjou">Saint-Barthélémy d'Anjou</option>
+                        <option  value="Saint-Etienne">Saint-Etienne</option>
+                        <option  value="Saint-Etienne-de-Montluc">Saint-Etienne-de-Montluc</option>
+                        <option  value="Toulouse">Toulouse</option>
+                        <option  value="Versailles">Versailles</option>
+                    </select>
+                </div>
+
+                <div class="text-xl text-yellow-800 mx-2 my-2">
+                    <label for="type_univ" class="hidden">Etablissement</label>
+                    <select name="type_univ" id="type_univ"  onchange="onchange_type_univ()">
+                        <option  value="">Etablissement</option>
+                        <option  value="Privée">Privé</option>
+                        <option  value="Publique">Public</option>
+                    </select>                  
+                </div>
+
+                <div class="text-xl text-yellow-800 mx-2 my-2 ">
+                    <label for="type_formation" class="hidden">Fomation:</label>
+                    <select name="type_formation" id="type_formation" onchange="onchange_type_formation()">
+                        <option  value="">Fomation</option>
+                        <option  value="Formation initiale">Formation initiale</option>
+                        <option  value="Formation Continue">Formation continue</option>
+                    </select>                    
+                </div>
+
+                <div class="text-xl text-yellow-800 my-2 mx-2">
+                    <label for="modeSuiviCours" class="hidden">Accès:</label>
+                    <select name="modeSuiviCours" id="modeSuiviCours" onchange="onchange_mode_suivi_cours()">
+                        <option  value="">Accès</option>
+                        <option  value="Distanciel">Distanciel</option>
+                        <option  value="Présentiel et distanciel">Présentiel et distanciel</option>
+                        <option  value="Présentiel">Présentiel</option>
+                    </select>                    
+                </div>
+
+            </div>
+        </div>
+
+        <section id="mapghgy">
+            <!--<iframe src="https://www.google.com/maps/d/u/0/embed?mid=13fYZcoOG6xuNMs32y5ruXwXqjrvGTnY&ehbc=2E312F"></iframe>-->
+        </section>
+        <div id="map" class="map  w-full h-full"></div>
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="crossorigin=""></script>
+        <script src="./dist/map.js" type="text/javascript"></script>
+
+        <div class="" id="decorative-map" inert></div>
+        <script src="https://unpkg.com/wicg-inert@latest/dist/inert.min.js"></script>
+   </main>
+
+
+   <!--
+           <div  id="" class="grid grid-col-1 gap-2 mx-auto p-2 text-black mt-5" > div1            
+                <div  class=" card  flex flex-wrap w-16 border-y-2 left-0 mb-2 rounded-lg border-black p-1 lg:p-3 lg:my-2 shadow-lg hover:shadow-black hover:border-2 transition ease-in-out duration-700"> div3 
+                    <h2 class="text-xl text-yellow-800 m-3">Duelist</h2>
+                    <div class="text-sm block m-2 p-2"> Nom de l'organisme : Non-renseigné</div>
+                    <div class="text-sm block m-2 p-2"> Accès :  Présentiel et distanciel </div>
+                    <div class="text-sm block m-2 p-2"> Lieu :  Angers </div>
+                    <div id="" class="bg-slate-50 block text-yellow-800 rounded-lg border-solid border-black p-1 hover:bg-yellow-800 hover:shadow-lg hover:text-white transition ease-in-out duration-700"></div> div2
+                </div>
+           </div>
+        -->
+    <footer class="mb-1 p-4 bg-slate-50 rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+        <div class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 Design4Green™. All Rights Reserved.
+        </div>
+        
+    </footer>
+
+    <script>
+        function Open()
+        {
+            document.querySelector('.sidebar').classList.toggle('overflow-y-auto')
+            document.querySelector('.sidebar').classList.toggle('left-[-300px]')
+        }
+        function Open_Panier()
+        {
+            document.querySelector('.sidebar_panier').classList.toggle('overflow-y-auto')
+            document.querySelector('.sidebar_panier').classList.toggle('right-[-300px]')
+            document.querySelector('.sidebar_panier').classList.add('right-1')
+        }
+        
+    </script>
+</body>
+</html>
